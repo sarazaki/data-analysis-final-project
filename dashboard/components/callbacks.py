@@ -1,7 +1,7 @@
 from dash import Input, Output
-from dashboard.plots.user_plots import subscriber_vs_customer, gender_distribution
-from dashboard.plots.time_plots import trips_by_weekday, duration_distribution
-from dashboard.plots.station_plots import top_start_stations
+from plots.user_plots import subscriber_vs_customer, gender_distribution
+from plots.time_plots import trips_by_weekday, duration_distribution
+from plots.station_plots import top_start_stations
 
 
 def register_callbacks(app, df):
