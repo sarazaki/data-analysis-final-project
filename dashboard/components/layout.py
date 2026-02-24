@@ -1,12 +1,12 @@
 from dash import html, dcc
 import dash_bootstrap_components as dbc
 
+
 def create_layout(df):
 
     return dbc.Container([
 
-    # Main Header
-    # العنوان الرئيسي للوحة البيانات
+        # Header
         dbc.Row([
             dbc.Col(html.H1(
                 "Ford GoBike Performance Dashboard",
@@ -16,12 +16,13 @@ def create_layout(df):
 
         # FILTERS
         dbc.Row([
+
             dbc.Col([
                 html.Label("User Type"),
                 dcc.Dropdown(
                     id="user_filter",
                     options=[{"label": i, "value": i} for i in df["user_type"].unique()],
-                    value=df["user_type"].unique(),
+                    value=list(df["user_type"].unique()),
                     multi=True
                 )
             ], width=4),
@@ -31,7 +32,7 @@ def create_layout(df):
                 dcc.Dropdown(
                     id="gender_filter",
                     options=[{"label": i, "value": i} for i in df["member_gender"].dropna().unique()],
-                    value=df["member_gender"].dropna().unique(),
+                    value=list(df["member_gender"].dropna().unique()),
                     multi=True
                 )
             ], width=4),
@@ -41,15 +42,14 @@ def create_layout(df):
                 dcc.Dropdown(
                     id="age_filter",
                     options=[{"label": i, "value": i} for i in df["age_group"].unique()],
-                    value=df["age_group"].unique(),
+                    value=list(df["age_group"].unique()),
                     multi=True
                 )
             ], width=4),
+
         ], className="mb-4"),
 
-    # KPI Section: Quick Stats Cards
-    # قسم مؤشرات الأداء: كروت تعرض أرقام ملخصة سريعة
-    
+        # KPIs
         dbc.Row([
             dbc.Col(dbc.Card(dbc.CardBody([
                 html.H6("Total Trips"),
