@@ -26,14 +26,14 @@ def register_callbacks(app, df):
     )
     def update_dashboard(user_type, gender, age_group):
 
-        # لو المستخدم مسح الاختيارات
-        if not user_type:
+        # تثبيت القيم الافتراضية لو حصل None
+        if user_type is None:
             user_type = list(df["user_type"].unique())
 
-        if not gender:
+        if gender is None:
             gender = list(df["member_gender"].dropna().unique())
 
-        if not age_group:
+        if age_group is None:
             age_group = list(df["age_group"].unique())
 
         # فلترة البيانات
@@ -43,7 +43,7 @@ def register_callbacks(app, df):
             (df["age_group"].isin(age_group))
         ]
 
-        # لو مفيش بيانات بعد الفلترة
+        # لو مفيش بيانات
         if filtered.empty:
             empty_fig = go.Figure()
             empty_fig.update_layout(template="plotly_white")
