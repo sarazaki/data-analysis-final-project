@@ -1,11 +1,8 @@
 from dash import html, dcc
 import dash_bootstrap_components as dbc
 
-
 def create_layout(df):
-
     return dbc.Container([
-
         # Header
         dbc.Row([
             dbc.Col(html.H1(
@@ -13,10 +10,9 @@ def create_layout(df):
                 className="text-center text-primary my-4"
             ))
         ]),
-
+        
         # FILTERS
         dbc.Row([
-
             dbc.Col([
                 html.Label("User Type"),
                 dcc.Dropdown(
@@ -26,7 +22,6 @@ def create_layout(df):
                     multi=True
                 )
             ], width=4),
-
             dbc.Col([
                 html.Label("Gender"),
                 dcc.Dropdown(
@@ -36,7 +31,6 @@ def create_layout(df):
                     multi=True
                 )
             ], width=4),
-
             dbc.Col([
                 html.Label("Age Group"),
                 dcc.Dropdown(
@@ -46,42 +40,40 @@ def create_layout(df):
                     multi=True
                 )
             ], width=4),
-
         ], className="mb-4"),
-
+        
         # KPIs
         dbc.Row([
             dbc.Col(dbc.Card(dbc.CardBody([
                 html.H6("Total Trips"),
                 html.H3(id="kpi_trips")
             ])), width=4),
-
             dbc.Col(dbc.Card(dbc.CardBody([
                 html.H6("Average Duration (Min)"),
                 html.H3(id="kpi_duration")
             ])), width=4),
-
             dbc.Col(dbc.Card(dbc.CardBody([
                 html.H6("Active Users"),
                 html.H3(id="kpi_users")
             ])), width=4),
         ], className="mb-4"),
-
+        
         # TIME SECTION
         dbc.Row([
             dbc.Col(dcc.Graph(id="weekday_chart"), width=6),
             dbc.Col(dcc.Graph(id="duration_chart"), width=6),
         ], className="mb-4"),
-
+        
         # USER SECTION
         dbc.Row([
             dbc.Col(dcc.Graph(id="subscriber_chart"), width=6),
             dbc.Col(dcc.Graph(id="gender_chart"), width=6),
         ], className="mb-4"),
-
-        # STATION SECTION
+        
+        # AGE & STATION SECTION
         dbc.Row([
-            dbc.Col(dcc.Graph(id="station_chart"), width=12),
-        ]),
-
+            dbc.Col(dcc.Graph(id="age_chart"), width=6),      # Added age chart
+            dbc.Col(dcc.Graph(id="station_chart"), width=6),  # Changed to width=6 for balance
+        ], className="mb-4"),
+        
     ], fluid=True)
