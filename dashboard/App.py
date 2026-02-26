@@ -6,7 +6,7 @@ from components.callbacks import register_callbacks
 import pandas as pd
 
 
-df = pd.read_csv("data/processed/fordgobike-tripdataFor201902_cleaned.csv")
+df = pd.read_csv("/data/processed/fordgobike-tripdataFor201902_cleaned.csv")
 
 app = Dash(
     __name__,
