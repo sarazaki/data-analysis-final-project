@@ -72,6 +72,10 @@ def duration_distribution(df):
         title=title,
         color_discrete_sequence=[COLORS['primary']]
     )
+    fig.update_traces(
+    marker_line_width=1.5,
+    marker_line_color="white"
+    )
     
     fig.update_layout(
         template="plotly_white",
@@ -110,7 +114,7 @@ def create_duration_histogram(df, color=None):  # Added color parameter with def
     )
     
     fig.update_traces(
-        marker_line_width=1,
+        marker_line_width=1.5,
         marker_line_color="white"
     )
     
