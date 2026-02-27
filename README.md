@@ -91,5 +91,7 @@ This section highlights user demographics, popular stations, and usage distribut
 </p>
 ## 🎥 Demo Video
 <p align="center">
-<video src="videos/APP.mp4" controls width="100%"></video>
+
+▶️ [Watch the dashboard demo](videos/APP.mp4)
+
 </p>
