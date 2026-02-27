@@ -73,3 +73,5 @@ This interactive dashboard provides insights into bike-sharing usage patterns ac
 | 5 | San Francisco Caltrain | 2,517 |
 
 ## 🏗️ Project Structure
+
+<img src="images/project structure.png" width="800">
