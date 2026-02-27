@@ -91,5 +91,8 @@ This section highlights user demographics, popular stations, and usage distribut
 </p>
 ## 🎥 Demo Video
 <p align="center">
-  [![Watch Demo](images\first part.PNG)](videos/APP.mp4)
+ <video width="640" height="360" controls>
+  <source src="videos/APP.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 </p>
