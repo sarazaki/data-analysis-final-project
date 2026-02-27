@@ -93,7 +93,7 @@ class BikeSharePreprocessor:
         df['age'] = dataset_year - df['member_birth_year']
 
         df = df[
-            (df['age'] >= 15) &
+            (df['age'] >= 18) &
             (df['age'] <= 80)
         ]
 
@@ -173,9 +173,9 @@ class BikeSharePreprocessor:
 
         df['age_group'] = pd.cut(
             df['age'],
-            bins=[15, 30, 45, 60, 80],
-            labels=['15-29', '30-44', '45-59', '60-79'],
-            right=False
+            bins=[18, 25, 35, 45, 60, 80],
+            labels=['18-25', '26-35', '36-45', '46-60', '61-80'],
+            right=True
         )
 
         self.df = df
