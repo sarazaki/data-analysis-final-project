@@ -63,6 +63,34 @@ This interactive dashboard provides insights into bike-sharing usage patterns ac
 
 ## 🏗️ Project Structure
 
+    DATAANALYSISFINAL
+    └── data-analysis-final-project/
+    ├── .vscode/
+    ├── dashboard/
+    │   ├── pycache/
+    │   ├── components/
+    │   │   ├── pycache/
+    │   │   ├── init.py
+    │   │   ├── callbacks.py
+    │   │   └── layout.py
+    │   ├── plots/
+    │   │   ├── pycache/
+    │   │   ├── init.py
+    │   │   ├── station_plots.py
+    │   │   ├── time_plots.py
+    │   │   └── user_plots.py
+    │   ├── utils/
+    │   │   └── init.py
+    │   └── App.py
+    ├── data/
+    ├── material/
+    ├── preprocessing/
+    │   ├── pycache/
+    │   ├── init.py
+    │   ├── pipeline.py
+    │   └── preprocessor.py
+    └── README.md
+
 <p align="center">
   <img src="images/project structure.PNG" width="800">
 </p>
