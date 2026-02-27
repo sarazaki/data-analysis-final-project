@@ -74,7 +74,7 @@ This interactive dashboard provides insights into bike-sharing usage patterns ac
 
 ## 🏗️ Project Structure
 
-<img src="https://drive.google.com/file/d/1waZZ9sLtNvSLAkuec-x3JjZ715t6sCOp/view?usp=sharing" width="800">
+<img src="images\project structure.PNG" width="800">
 
 ## 📊 Dashboard – Part 1: KPIs & Filters
 
@@ -89,7 +89,7 @@ This section shows the interactive filters (User Type, Gender, Age Group) and ke
 This section analyzes trip behavior by hour of day and trip duration distribution.
 
 <p align="center">
-  <img src="images/dashboard_part2.png" width="900">
+  <img src="images/dashboard_part2.PNG" width="900">
 </p>
 
 ## 📉 Dashboard – Part 3: Demographics & Stations
@@ -97,5 +97,5 @@ This section analyzes trip behavior by hour of day and trip duration distributio
 This section highlights user demographics, popular stations, and usage distribution.
 
 <p align="center">
-  <img src="images/dashboard_part3.png" width="900">
+  <img src="images/dashboard_part3.PNG" width="900">
 </p>
