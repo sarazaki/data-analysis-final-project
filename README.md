@@ -66,6 +66,7 @@ This interactive dashboard provides insights into bike-sharing usage patterns ac
 <p align="center">
   <img src="images/project structure.PNG" width="800">
 </p>
+
     DATAANALYSISFINAL
     └── data-analysis-final-project/
     ├── .vscode/
