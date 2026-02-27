@@ -64,14 +64,15 @@ This interactive dashboard provides insights into bike-sharing usage patterns ac
 ## 🏗️ Project Structure
 
 <p align="center">
-  <img src="images\project structure.PNG" width="800">
+  <img src="images/project structure.PNG" width="800">
 </p>
+
 ## 📊 Dashboard – Part 1: KPIs & Filters
 
 This section shows the interactive filters (User Type, Gender, Age Group) and key performance indicators.
 
 <p align="center">
-  <img src="images\first part.PNG" width="900">
+  <img src="images/first part.PNG" width="900">
 </p>
 
 ## 📈 Dashboard – Part 2: Usage Patterns
@@ -89,9 +90,9 @@ This section highlights user demographics, popular stations, and usage distribut
 <p align="center">
   <img src="images/third part.PNG" width="900">
 </p>
+
 ## 🎥 Demo Video
+
 <p align="center">
-
-▶️ [Watch the dashboard demo](videos/APP.mp4)
-
+  ▶️ <a href="videos/APP.mp4">Watch the dashboard demo</a>
 </p>
