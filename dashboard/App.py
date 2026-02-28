@@ -16,7 +16,7 @@ from components.layout import create_layout
 from components.callbacks import register_callbacks
 
 # تشغيل الـ Pipeline
-data_path = os.path.join(base_dir, "..", "data", "processed", "fordgobike-tripdataFor201902_cleaned.csv")
+data_path = os.path.join(base_dir, "..", "data", "raw", "fordgobike-tripdataFor201902.csv")
 
 preprocessor = BikeSharePreprocessor(data_path)
 df = (preprocessor
