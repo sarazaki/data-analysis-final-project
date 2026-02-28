@@ -92,7 +92,7 @@ def gender_distribution(df):
             line=dict(width=1, color='white')
         ),
         text=[f"{p:.1f}%" for p in gender_percent.values],
-        textposition='outside',
+        textposition='none',
         textfont=dict(size=11, color=COLORS['dark'])
     ))
 
@@ -131,7 +131,7 @@ def trips_by_age_group(df, age_col='age_group', title='Trips by Age Group'):
         y='trips',
         title=title,
         color='age_group',
-        color_discrete_sequence=[COLORS['primary'], COLORS['secondary'], COLORS['accent']]
+        color_discrete_sequence=[COLORS['secondary'],COLORS['primary'],COLORS['accent'], "#80DEEA", "#43BC75"]
     )
 
     fig.update_layout(
