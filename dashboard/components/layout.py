@@ -29,7 +29,9 @@ def create_layout(df):
 
     # تجهيز قيم الـ Age Group عشان نضمن إنها مش فاضية
     # بنشيل الـ NaN وبنرتبهم
-    age_options = sorted([i for i in df["age_group"].unique() if pd.notna(i)])
+    # ترتيب ثابت
+    age_order = ["Younger", "Adult", "Senior"]
+    gender_order = ["Male", "Female", "Other"]
 
     return html.Div([
         # --- Sidebar ---
@@ -58,8 +60,8 @@ def create_layout(df):
                 dbc.Checklist(
                     id="gender_filter",
                     options=[{"label": html.Span(i, style={"marginLeft": "8px", "fontSize": "18px"}), "value": i} 
-                            for i in df["member_gender"].dropna().unique()],
-                    value=list(df["member_gender"].dropna().unique()),
+                        for i in gender_order if i in df["member_gender"].dropna().unique()],
+                    value=[i for i in gender_order if i in df["member_gender"].dropna().unique()],
                     inline=False,
                     className="mb-3",
                     labelStyle={"display": "block", "marginBottom": "8px", "cursor": "pointer"}
@@ -73,8 +75,8 @@ def create_layout(df):
                 dbc.Checklist(
                     id="age_filter",
                     options=[{"label": html.Span(i, style={"marginLeft": "8px", "fontSize": "18px"}), "value": i} 
-                            for i in age_options],
-                    value=age_options,
+                            for i in age_order if i in df["age_group"].unique()],
+                    value=[i for i in age_order if i in df["age_group"].unique()],
                     inline=False,
                     className="mb-3",
                     labelStyle={"display": "block", "marginBottom": "8px", "cursor": "pointer"}
