@@ -9,18 +9,22 @@ def create_layout(df):
         "top": 0,
         "left": 0,
         "bottom": 0,
-        "width": "18rem",
-        "padding": "2rem 1rem",
-        "background-color": "#f8f9fa",
-        "border-right": "1px solid #dee2e6",
-        "overflow-y": "auto" # عشان لو الفلاتر كتير تقدر تسكرول
+        "width": "16rem",
+        "padding": "1.5rem",
+        "background-color": "#ffffff",
+        "border-right": "1px solid #e0e0e0",
+        "overflow-y": "auto",
+        "box-shadow": "2px 0 8px rgba(0,0,0,0.05)"
     }
+
 
     # تنسيق المحتوى
     CONTENT_STYLE = {
-        "margin-left": "20rem",
+        "margin-left": "18rem",
         "margin-right": "2rem",
-        "padding": "2rem 1rem",
+        "padding": "2rem",
+        "background-color": "#f5f7fa",
+        "min-height": "100vh"
     }
 
     # تجهيز قيم الـ Age Group عشان نضمن إنها مش فاضية
@@ -29,73 +33,109 @@ def create_layout(df):
 
     return html.Div([
         # --- Sidebar ---
-        html.Div([
-            html.H2("Filters", className="display-6 text-primary"),
-            html.Hr(),
+                html.Div([
+            html.H4("Filters", className="mb-4 text-dark", style={"fontWeight": "600"}),
             
-            # فلتر User Type
+            # User Type (Checkboxes)
             html.Div([
-                html.Label("User Type", className="fw-bold"),
-                dcc.Dropdown(
+                html.H6("User Type", className="fw-bold text-secondary mb-2", 
+                        style={"fontSize": "20px", "textTransform": "uppercase", "letterSpacing": "0.5px"}),
+                dbc.Checklist(
                     id="user_filter",
-                    options=[{"label": i, "value": i} for i in df["user_type"].unique()],
+                    options=[{"label": html.Span(i, style={"marginLeft": "8px", "fontSize": "18px"}), "value": i} 
+                            for i in df["user_type"].unique()],
                     value=list(df["user_type"].unique()),
-                    multi=True,
-                    className="mb-3"
+                    inline=False,
+                    className="mb-3",
+                    labelStyle={"display": "block", "marginBottom": "8px", "cursor": "pointer"}
                 ),
-            ]),
-
-            # فلتر Gender
-            html.Div([
-                html.Label("Gender", className="fw-bold"),
-                dcc.Dropdown(
-                    id="gender_filter",
-                    options=[{"label": i, "value": i} for i in df["member_gender"].dropna().unique()],
-                    value=list(df["member_gender"].dropna().unique()),
-                    multi=True,
-                    className="mb-3"
-                ),
-            ]),
-
-            # فلتر Age Group (التعديل هنا)
-            html.Div([
-                html.Label("Age Group", className="fw-bold"),
-                dcc.Dropdown(
-                    id="age_filter",
-                    options=[{"label": i, "value": i} for i in age_options],
-                    value=age_options, # كدا هيختارهم كلهم أوتوماتيك أول ما يفتح
-                    multi=True,
-                    className="mb-3"
-                ),
-            ]),
-        ], style=SIDEBAR_STYLE),
-
-        # --- Main Content ---
-        html.Div([
-            # Header
-            dbc.Row([
-                dbc.Col(html.H1(
-                    "Ford GoBike Performance Dashboard",
-                    className="text-center text-primary mb-5"
-                ))
-            ]),
-
-            # KPIs Section
-            dbc.Row([
-                dbc.Col(dbc.Card(dbc.CardBody([
-                    html.H6("Total Trips", className="text-muted"),
-                    html.H3(id="kpi_trips", className="text-primary")
-                ])), width=4),
-                dbc.Col(dbc.Card(dbc.CardBody([
-                    html.H6("Average Duration (Min)", className="text-muted"),
-                    html.H3(id="kpi_duration", className="text-primary")
-                ])), width=4),
-                dbc.Col(dbc.Card(dbc.CardBody([
-                    html.H6("Active Users", className="text-muted"),
-                    html.H3(id="kpi_users", className="text-primary")
-                ])), width=4),
             ], className="mb-4"),
 
+            # Gender (Checkboxes)
+            html.Div([
+                html.H6("Gender", className="fw-bold text-secondary mb-2",
+                        style={"fontSize": "20px", "textTransform": "uppercase", "letterSpacing": "0.5px"}),
+                dbc.Checklist(
+                    id="gender_filter",
+                    options=[{"label": html.Span(i, style={"marginLeft": "8px", "fontSize": "18px"}), "value": i} 
+                            for i in df["member_gender"].dropna().unique()],
+                    value=list(df["member_gender"].dropna().unique()),
+                    inline=False,
+                    className="mb-3",
+                    labelStyle={"display": "block", "marginBottom": "8px", "cursor": "pointer"}
+                ),
+            ], className="mb-4"),
+
+            # Age Group (Checkboxes)
+            html.Div([
+                html.H6("Age Group", className="fw-bold text-secondary mb-2",
+                        style={"fontSize": "20px", "textTransform": "uppercase", "letterSpacing": "0.5px"}),
+                dbc.Checklist(
+                    id="age_filter",
+                    options=[{"label": html.Span(i, style={"marginLeft": "8px", "fontSize": "18px"}), "value": i} 
+                            for i in age_options],
+                    value=age_options,
+                    inline=False,
+                    className="mb-3",
+                    labelStyle={"display": "block", "marginBottom": "8px", "cursor": "pointer"}
+                ),
+            ], className="mb-4"), ], style=SIDEBAR_STYLE),
+                
+        # --- Main Content ---
+        html.Div([
+    # Header
+    dbc.Row([
+        dbc.Col(html.H1(
+            "Ford GoBike Performance Dashboard",
+            className="text-center text-primary mb-5"
+        ))
+    ]),
+
+    # KPIs Section
+    dbc.Row([
+        # KPI 1: Trips
+        dbc.Col(
+                html.Div([
+                html.P("🚲Total Trips", className="text-muted", style={"fontSize": "20px"}),
+                html.H3(id="kpi_trips", className="text-primary mb-2", 
+                        style={"fontSize": "25px", "fontWeight": "700"}),
+            ], className="text-center p-1", 
+                style={"background": "white", "borderRadius": "12px", "boxShadow": "0 2px 8px rgba(0,0,0,0.08)", "height": "100%"})
+        , width=3),
+        
+        # KPI 2: Avg Duration
+        dbc.Col(
+            html.Div([ 
+                html.P("🕓Avg duration (Min)", className="text-muted", style={"fontSize": "20px"}),
+                html.H3(id="kpi_duration", className="text-primary mb-5",
+                        style={"fontSize": "25px", "fontWeight": "700"}),
+            ], className="text-center p-1",
+                style={"background": "white", "borderRadius": "12px", "boxShadow": "0 2px 8px rgba(0,0,0,0.08)", "height": "100%"})
+        , width=3),
+        
+        # KPI 3: Active Users
+        dbc.Col(
+            html.Div([
+                html.P("👤Active users", className="text-muted", style={"fontSize": "20px"}),
+                html.H3(id="kpi_users", className="text-primary mb-2",
+                        style={"fontSize": "25px", "fontWeight": "700"}),
+                
+            ], className="text-center p-1",
+                style={"background": "white", "borderRadius": "12px", "boxShadow": "0 2px 8px rgba(0,0,0,0.08)", "height": "100%"})
+        , width=3),
+        
+        # KPI 4: Most Popular Station
+        dbc.Col(
+            html.Div(
+                [html.P("📍Most popular station", className="text-muted", style={"fontSize": "20px"}),
+                html.H3(id="kpi_station", className="text-primary mb-2",
+                        style={"fontSize": "25px", "fontWeight": "700"}),
+                
+            ], className="text-center p-1",
+                style={"background": "white", "borderRadius": "12px", "boxShadow": "0 2px 8px rgba(0,0,0,0.08)", "height": "100%"})
+        , width=3),
+    ], className="mb-4", justify="center"),
+]),
             # Graphs Section 1
             dbc.Row([
                 dbc.Col(dcc.Graph(id="weekday_chart"), width=6),
@@ -115,4 +155,3 @@ def create_layout(df):
             ], className="mb-4"),
 
         ], style=CONTENT_STYLE)
-    ])

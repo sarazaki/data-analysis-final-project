@@ -19,6 +19,7 @@ def register_callbacks(app, df):
             Output("kpi_trips", "children"),
             Output("kpi_duration", "children"),
             Output("kpi_users", "children"),
+            Output("kpi_station", "children"),
             Output("weekday_chart", "figure"),
             Output("duration_chart", "figure"),
             Output("subscriber_chart", "figure"),
@@ -67,6 +68,7 @@ def register_callbacks(app, df):
         total_trips = f"{len(filtered):,}"
         avg_duration = f"{filtered['duration_min'].mean():.1f}"
         active_users = f"{filtered['bike_id'].nunique():,}"
+        top_station = filtered["start_station_name"].value_counts().idxmax()
         
         # إعداد بيانات الساعات
         hour_data = filtered.groupby('hour').size().reset_index(name='trips')
@@ -75,6 +77,7 @@ def register_callbacks(app, df):
             total_trips,
             avg_duration,
             active_users,
+            top_station,
             trips_by_hour(hour_data),
             duration_distribution(filtered),
             subscriber_vs_customer(filtered),

@@ -172,12 +172,12 @@ class BikeSharePreprocessor:
         )
 
         df['age_group'] = pd.cut(
-            df['age'],
-            bins=[18, 25, 35, 45, 60, 80],
-            labels=['18-25', '26-35', '36-45', '46-60', '61-80'],
-            right=True
+        df['age'],
+        bins=[18, 30, 50, 80],
+        labels=['Younger', 'Adult', 'Senior'],
+        right=True,
+        include_lowest=True
         )
-
         self.df = df
 
         print("Feature engineering completed.")

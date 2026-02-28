@@ -131,7 +131,7 @@ def trips_by_age_group(df, age_col='age_group', title='Trips by Age Group'):
         y='trips',
         title=title,
         color='age_group',
-        color_discrete_sequence=[COLORS['secondary'],COLORS['primary'],COLORS['accent'], "#80DEEA", "#43BC75"]
+        color_discrete_sequence=[COLORS['secondary'],COLORS['accent'],"#43BC75" ]
     )
 
     fig.update_layout(
