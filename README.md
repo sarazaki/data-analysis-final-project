@@ -100,7 +100,7 @@ This interactive dashboard provides insights into bike-sharing usage patterns ac
 This section shows the interactive filters (User Type, Gender, Age Group) and key performance indicators.
 
 <p align="center">
-  <img src="images/first part.PNG" width="900">
+  <img src="images/one_part.PNG" width="900">
 </p>
 
 ## 📈 Dashboard – Part 2: Usage Patterns
@@ -108,15 +108,7 @@ This section shows the interactive filters (User Type, Gender, Age Group) and ke
 This section analyzes trip behavior by hour of day and trip duration distribution.
 
 <p align="center">
-  <img src="images/second part.PNG" width="900">
-</p>
-
-## 📉 Dashboard – Part 3: Demographics & Stations
-
-This section highlights user demographics, popular stations, and usage distribution.
-
-<p align="center">
-  <img src="images/third part.PNG" width="900">
+  <img src="images/two_part.PNG" width="900">
 </p>
 
 ## 🎥 Demo Video
